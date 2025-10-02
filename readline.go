@@ -32,6 +32,8 @@ type Config struct {
 	Prompt string
 
 	// readline will persist historys to file where HistoryFile specified
+	// Library users should be careful regarding the path configured
+	// for HistoryFile to avoid path tranversal issues or rogue symbolic links.
 	HistoryFile string
 	// specify the max length of historys, it's 500 by default, set it to -1 to disable history
 	HistoryLimit           int

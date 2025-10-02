@@ -66,6 +66,7 @@ func (o *opHistory) initHistory() {
 func (o *opHistory) historyUpdatePath(path string) {
 	o.fdLock.Lock()
 	defer o.fdLock.Unlock()
+	// nosemgrep - see comment in readline.go for Config.HistoryFile
 	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0666)
 	if err != nil {
 		return
@@ -112,6 +113,7 @@ func (o *opHistory) rewriteLocked() {
 	}
 
 	tmpFile := o.cfg.HistoryFile + ".tmp"
+	// nosemgrep - see comment in readline.go for Config.HistoryFile
 	fd, err := os.OpenFile(tmpFile, os.O_CREATE|os.O_WRONLY|os.O_TRUNC|os.O_APPEND, 0666)
 	if err != nil {
 		return
